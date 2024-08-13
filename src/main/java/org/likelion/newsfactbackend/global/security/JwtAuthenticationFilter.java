@@ -27,6 +27,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final RedisConfig redisConfig;
 
     private final List<String> passUrl = List.of(
+            "/chat/**",
             "/", // react
             "/api/v1/auth/google/callback",
             "/api/v1/auth/kakao/callback",
@@ -37,7 +38,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             "/images/**",
             "/js/**",
             "/favicon.ico",
-            "/get_sentiment_analysis/**"
+            "/ask/**"
     );
 
     @Override

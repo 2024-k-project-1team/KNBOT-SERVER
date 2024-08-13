@@ -2,7 +2,6 @@ package org.likelion.newsfactbackend.global.security;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,11 +28,13 @@ public class SecurityConfiguration {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of(
-                "https://newspect.co.kr",
-                "http://newspect.co.kr",
-                "http://localhost:3000", // test
-                "http://localhost:8080")); // test
+//        config.setAllowedOrigins(List.of(
+//                "https://knbot.xyz",
+//                "http://knbot.xyz",
+//                "https://apic.app",
+//                "http://localhost:3000", // test
+//                "http://localhost:8080")); // test
+        config.addAllowedOriginPattern("*");
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("*"));
@@ -61,8 +62,9 @@ public class SecurityConfiguration {
                                 ,"/api/v1/auth/google/callback").permitAll()
                         .requestMatchers(PATTERNS).permitAll()
 
-                        .requestMatchers("/api/v1/auth/log-out", // LOGOUT API
-                                "/api/v1/news/**", // NEWS API
+                        .requestMatchers("/chat/**").permitAll()
+
+                        .requestMatchers("/api/v1/auth/log-out",// LOGOUT API
                                 "/api/v1/**") // ALL
                                     .hasRole("USER")
                         .anyRequest().authenticated()
