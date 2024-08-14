@@ -116,7 +116,7 @@ public class ChatController {
         return ResponseEntity.ok(chatService.getMyChatRooms(nickName, pageable));
     }
 
-    @MessageMapping("/knbot/{roomNumber}") // mapping ex)/pub/knbot/chat
+    @MessageMapping("/knbot/{roomNumber}") // mapping ex)/pub/knbot/{roomnumber}
     public void sendMessage(RequestChatContentsDto message,
                             SimpMessageHeaderAccessor accessor,
                             @DestinationVariable Long roomNumber) throws Exception {
