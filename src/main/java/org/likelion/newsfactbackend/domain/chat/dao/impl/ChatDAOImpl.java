@@ -54,7 +54,7 @@ public class ChatDAOImpl implements ChatDAO {
 
             log.info("[chat] create chatroom success");
 
-            return ResultCode.OK.toResponseEntity();
+            return ResponseEntity.ok().body(newChatRoom.getId());
         }else{
             log.warn("[chat] user is not found!");
             return ResultCode.NOT_FOUND_USER.toResponseEntity();
