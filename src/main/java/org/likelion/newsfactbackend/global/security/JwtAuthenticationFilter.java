@@ -28,6 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final List<String> passUrl = List.of(
             "/chat/**",
+            "/chatting/**",
             "/", // react
             "/api/v1/auth/google/callback",
             "/api/v1/auth/kakao/callback",

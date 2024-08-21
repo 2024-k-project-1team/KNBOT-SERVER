@@ -28,13 +28,13 @@ public class SecurityConfiguration {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of(
-                "https://knbot.xyz",
-                "http://knbot.xyz",
-                "https://apic.app",
-                "http://localhost:3000", // test
-                "http://localhost:8080")); // test
-//        config.addAllowedOriginPattern("*");
+//        config.setAllowedOrigins(List.of(
+//                "https://knbot.xyz",
+//                "http://knbot.xyz",
+//                "https://apic.app",
+//                "http://localhost:3000", // test
+//                "http://localhost:8080")); // test
+        config.addAllowedOriginPattern("*");
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("*"));
